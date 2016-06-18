@@ -1,6 +1,7 @@
 ﻿using MapNat.controllers;
 using MapNat.helpers.ws.exercicio;
 using MapNat.helpers.ws.pessoa;
+using MapNat.helpers.ws.treino;
 
 namespace MapNat.services
 {
@@ -23,6 +24,18 @@ namespace MapNat.services
             var control = new PessoasController();
 
             return control.ObterPessoa(PessoaCodigo);
+        }
+        public ResponseTreino ObterTreino()
+        {
+            var control = new TreinoController();
+
+            return control.ObterTreino();
+        }
+        public ResponseTreino ObterTreinoAluno(int AlunoCodigo)
+        {
+            var control = new TreinoController();
+
+            return control.ObterTreinoAluno(AlunoCodigo);
         }
 
         public ResponseExercicio PutExercicio(string ApiKey, string PublicKey, string ID, string Latitude, string Longitude, string Descricao)

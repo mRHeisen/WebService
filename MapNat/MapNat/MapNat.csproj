@@ -68,17 +68,21 @@
   <ItemGroup>
     <Compile Include="controllers\PessoasController .cs" />
     <Compile Include="controllers\ExercicioController.cs" />
+    <Compile Include="controllers\TreinoController.cs" />
     <Compile Include="entities\pessoa\PessoaDAO.cs" />
     <Compile Include="entities\exercicio\ExercicioDAO.cs" />
     <Compile Include="entities\authenticate\AuthenticateDAO.cs" />
+    <Compile Include="entities\treino\TreinoDAO.cs" />
     <Compile Include="helpers\storage\Database.cs" />
     <Compile Include="helpers\storage\DBGetInfo.cs" />
     <Compile Include="helpers\ws\exercicio\ResponseExercicio.cs" />
     <Compile Include="helpers\ws\pessoa\ResponsePessoa.cs" />
+    <Compile Include="helpers\ws\treino\ResponseTreino.cs" />
     <Compile Include="helpers\ws\_default\Response.cs" />
     <Compile Include="helpers\ws\_default\ResponseStatus.cs" />
     <Compile Include="models\exercicio\Exercicio.cs" />
     <Compile Include="models\pessoa\Pessoa.cs" />
+    <Compile Include="models\treino\Treino.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="services\IMapNat.cs" />
     <Compile Include="services\MapNat.svc.cs">

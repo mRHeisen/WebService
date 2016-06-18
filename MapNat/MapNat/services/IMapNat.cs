@@ -1,5 +1,6 @@
 ﻿using MapNat.helpers.ws.exercicio;
 using MapNat.helpers.ws.pessoa;
+using MapNat.helpers.ws.treino;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 
@@ -20,10 +21,17 @@ namespace MapNat.services
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         ResponseExercicio ObterExecicios(int PessoaCodigo);
-        ///--------------
+        //-------------------------------------------------
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         ResponsePessoa ObterPessoa(int PessoaCodigo);
+        //-------------------------------------------------
+        [OperationContract]
+        [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        ResponseTreino ObterTreino();
+        [OperationContract]
+        [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        ResponseTreino ObterTreinoAluno(int AlunoCodigo);
 
         /// <summary>
         /// Este é um método do Web Service na interface do serviço, o mesmo método com os mesmos parâmetros que está no serviço em sí. Neste método caso seja passado um ID é porque tem de editar um registro
