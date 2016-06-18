@@ -9,7 +9,7 @@ namespace MapNat.controllers
     PessoaDAO PessoaDAO = new PessoaDAO();
 
     /// <summary>
-    /// Busca Lista de latitudes e longitudes cadastradas no banco de dados
+    /// Busca Lista Pessoas
     /// </summary>
     /// <returns></returns>
     internal ResponsePessoa ObterPessoa(int PessoaCodigo)

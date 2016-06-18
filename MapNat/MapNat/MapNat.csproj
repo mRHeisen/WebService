@@ -67,17 +67,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controllers\PessoasController .cs" />
-    <Compile Include="controllers\LocaisController.cs" />
-    <Compile Include="entities\Pessoa\PessoaDAO.cs" />
-    <Compile Include="entities\locais\LocaisDAO.cs" />
+    <Compile Include="controllers\ExercicioController.cs" />
+    <Compile Include="entities\pessoa\PessoaDAO.cs" />
+    <Compile Include="entities\exercicio\ExercicioDAO.cs" />
     <Compile Include="entities\authenticate\AuthenticateDAO.cs" />
     <Compile Include="helpers\storage\Database.cs" />
     <Compile Include="helpers\storage\DBGetInfo.cs" />
-    <Compile Include="helpers\ws\locais\ResponseLocais.cs" />
+    <Compile Include="helpers\ws\exercicio\ResponseExercicio.cs" />
     <Compile Include="helpers\ws\pessoa\ResponsePessoa.cs" />
     <Compile Include="helpers\ws\_default\Response.cs" />
     <Compile Include="helpers\ws\_default\ResponseStatus.cs" />
-    <Compile Include="models\locais\Locais.cs" />
+    <Compile Include="models\exercicio\Exercicio.cs" />
     <Compile Include="models\pessoa\Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="services\IMapNat.cs" />

@@ -13,11 +13,13 @@ namespace MapNat.models.pessoa
         { }
 
 
-        public Pessoa(int? PessoaCodigo, string nome, int? tipo)
+        public Pessoa(int? PessoaCodigo, string nome, int? tipo, string situacao , string pass)
         {
             this.PessoaCodigo = PessoaCodigo;
             this.nome = nome;
             this.tipo = tipo;
+            this.situacao = situacao;
+            this.pass = pass;
         }
 
         [DataMember(Order = 0)]
@@ -26,5 +28,9 @@ namespace MapNat.models.pessoa
         public string nome { get; set; }
         [DataMember(Order = 2)]
         public int? tipo { get; set; }
+        [DataMember(Order = 3)]
+        public string situacao { get; set; }
+        [DataMember(Order = 4)]
+        public string pass { get; set; }
     }
 }

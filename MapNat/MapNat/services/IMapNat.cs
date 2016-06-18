@@ -1,4 +1,4 @@
-﻿using MapNat.helpers.ws.locais;
+﻿using MapNat.helpers.ws.exercicio;
 using MapNat.helpers.ws.pessoa;
 using System.ServiceModel;
 using System.ServiceModel.Web;
@@ -19,7 +19,7 @@ namespace MapNat.services
         /// <returns></returns>
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        ResponseLocais ObterExecicios(int PessoaCodigo);
+        ResponseExercicio ObterExecicios(int PessoaCodigo);
         ///--------------
         [OperationContract]
         [WebGet(RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
@@ -37,6 +37,6 @@ namespace MapNat.services
         /// <returns></returns>
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        ResponseLocais PutLocais(string ApiKey, string PublicKey, string ID, string Latitude, string Longitude, string Descricao);
+        ResponseExercicio PutExercicio(string ApiKey, string PublicKey, string ID, string Latitude, string Longitude, string Descricao);
     }
 }

@@ -7,29 +7,29 @@ namespace MapNat.entities.pessoa
 {
     public class PessoaDAO
     {
-        /// <summary>
-        /// Busca tipo e longitude do banco de dados
-        /// </summary>
-        /// <param name="_errorCod"></param>
-        /// <returns></returns>
+
         public ResponsePessoa GetPessoa(int PessoaCodigo, out string _errorCod)
         {
             ResponsePessoa response = new ResponsePessoa();
             response.pessoa = new List<Pessoa>();
             _errorCod = string.Empty;
 
+
             //Busca pessoa
             using (Database db = new Database())
             {
                 db.Clear();
-                db.SqlStat.Append("select [PessoaCodigo], [Nome], [tipo] from[hf].[Pessoa]");
+                //Consulta para obter pelo codico
+                //db.SqlStat.Append("select [PessoaCodigo], [Nome], [tipo], [Situacao], [pass] from[hf].[Pessoa] WHERE PessoaCodigo = @ID");
+                //db.CreateParameter("@ID", PessoaCodigo);
+                db.SqlStat.Append("select [PessoaCodigo], [Nome], [tipo], [Situacao], [pass] from[hf].[Pessoa]");
 
                 if (db.ExecuteDataReader())
                 {
                     //Busca todas latitudes e longitudes colocando na List do ResponsePessoa
                     while (db.DataReader.Read())
                     {
-                        response.pessoa.Add(new Pessoa(db.GetInt("PessoaCodigo"), db.GetString("nome"), db.GetInt("tipo")));
+                        response.pessoa.Add(new Pessoa(db.GetInt("PessoaCodigo"), db.GetString("nome"), db.GetInt("tipo"), db.GetString("Situacao"), db.GetString("pass")));
                     }
                 }
                 else

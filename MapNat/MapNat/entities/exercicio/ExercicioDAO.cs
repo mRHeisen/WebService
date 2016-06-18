@@ -1,37 +1,33 @@
-﻿using MapNat.helpers.ws.locais;
-using MapNat.models.locais;
+﻿using MapNat.helpers.ws.exercicio;
+using MapNat.models.exercicio;
 using MapNat.helpers.storage;
 using System.Collections.Generic;
 using System;
 
-namespace MapNat.entities.locais
+namespace MapNat.entities.exercicio
 {
-    public class LocaisDAO
+    public class ExercicioDAO
     {
-        /// <summary>
-        /// Busca Latitude e longitude do banco de dados
-        /// </summary>
-        /// <param name="_errorCod"></param>
-        /// <returns></returns>
-        public ResponseLocais GetLocais(int CodPessoa, out string _errorCod)
+
+        public ResponseExercicio GetExercicio(int CodPessoa, out string _errorCod)
         {
-            ResponseLocais response = new ResponseLocais();
-            response.locais = new List<Locais>();
+            ResponseExercicio response = new ResponseExercicio();
+            response.exercicio = new List<Exercicio>();
             _errorCod = string.Empty;
 
-            //Busca latitude e longitude
             using (Database db = new Database())
             {
                 db.Clear();
-                db.SqlStat.Append("select [Url], [Nome], [Repeticoes] from[hf].[Exercicio] ex inner join[hf].[ImagemExercicio] imgEx on imgEx.[ExercicioCodigo] = ex.[ExercicioCodigo] inner join[hf].[Serie] s on ex.[ExercicioCodigo] = s.[ExercicioCodigo]");
-
+                //Consulta treino
+                // db.SqlStat.Append("select [Url], [Nome], [Repeticoes] from[hf].[Exercicio] ex inner join[hf].[ImagemExercicio] imgEx on imgEx.[ExercicioCodigo] = ex.[ExercicioCodigo] inner join[hf].[Serie] s on ex.[ExercicioCodigo] = s.[ExercicioCodigo]");
+                db.SqlStat.Append("select [ExercicioCodigo], [Nome], [Descricao] from[hf].[Exercicio]");
 
                 if (db.ExecuteDataReader())
                 {
-                    //Busca todas latitudes e longitudes colocando na List do ResponseLocais
+                    //Busca todos
                     while (db.DataReader.Read())
                     {
-                        response.locais.Add(new Locais(db.GetString("Url"), db.GetString("Nome"), Convert.ToString(db.GetInt("Repeticoes")), "hello"));
+                        response.exercicio.Add(new Exercicio(db.GetInt("ExercicioCodigo"), db.GetString("Nome"), db.GetString("Descricao")));
                     }
                 }
                 else
@@ -42,19 +38,11 @@ namespace MapNat.entities.locais
             return response;
         }
 
-        /// <summary>
-        /// Grava um local com suas informações de descrição, latitude e longitude, caso seja passa um ID altera algum dado desse local
-        /// </summary>
-        /// <param name="ID"></param>
-        /// <param name="Latitude"></param>
-        /// <param name="Longitude"></param>
-        /// <param name="Descricao"></param>
-        /// <param name="_errorCod"></param>
-        /// <returns></returns>
-        public ResponseLocais PutLocais(string ID, string Latitude, string Longitude, string Descricao, out string _errorCod)
-        {            
-            ResponseLocais response = new ResponseLocais();
-            response.locais = new List<Locais>();
+
+        public ResponseExercicio PutExercicio(string ID, string Latitude, string Longitude, string Descricao, out string _errorCod)
+        {
+            ResponseExercicio response = new ResponseExercicio();
+            response.exercicio = new List<Exercicio>();
             _errorCod = string.Empty;
 
             //Busca latitude e longitude
@@ -72,7 +60,7 @@ namespace MapNat.entities.locais
                     if (db.ExecuteNonQuery())
                     {
                         //Adiciona na Listos dados alterados para retornar eles mesmos pelo Web Service
-                        response.locais.Add(new Locais(Convert.ToString(ID), Descricao, Latitude, Longitude));
+                       // response.exercicio.Add(new Exercicio(Convert.ToString(ID), Descricao, Latitude, Longitude));
                     }
                     else
                     {                       

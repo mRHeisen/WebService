@@ -1,5 +1,5 @@
 ﻿using MapNat.controllers;
-using MapNat.helpers.ws.locais;
+using MapNat.helpers.ws.exercicio;
 using MapNat.helpers.ws.pessoa;
 
 namespace MapNat.services
@@ -12,15 +12,9 @@ namespace MapNat.services
     public class MapNat : IMapNat
     {
 
-        /// <summary>
-        /// Busca dados dos locais como ID, descrição, latitude e longitude.
-        /// </summary>
-        /// <param name="ApiKey"></param>
-        /// <param name="PublicKey"></param>
-        /// <returns></returns>
-        public ResponseLocais ObterExecicios(int PessoaCodigo)
+        public ResponseExercicio ObterExecicios(int PessoaCodigo)
         {
-            var control = new LocaisController();            
+            var control = new ExercicioController();            
 
             return control.ObterExecicios(PessoaCodigo);
         }
@@ -31,21 +25,11 @@ namespace MapNat.services
             return control.ObterPessoa(PessoaCodigo);
         }
 
-        /// <summary>
-        /// Grava dados dos locais como localizaçao e descrição ou atualiza local existente editando ele.
-        /// </summary>
-        /// <param name="ApiKey"></param>
-        /// <param name="PublicKey"></param>
-        /// <param name="ID"></param>
-        /// <param name="Latitude"></param>
-        /// <param name="Longitude"></param>
-        /// <param name="Descricao"></param>
-        /// <returns></returns>
-        public ResponseLocais PutLocais(string ApiKey, string PublicKey, string ID, string Latitude, string Longitude, string Descricao)
+        public ResponseExercicio PutExercicio(string ApiKey, string PublicKey, string ID, string Latitude, string Longitude, string Descricao)
         {
-            var control = new LocaisController();
+            var control = new ExercicioController();
 
-            return control.PutLocais(ApiKey, PublicKey, ID, Latitude, Longitude, Descricao);
+            return control.PutExercicio(ApiKey, PublicKey, ID, Latitude, Longitude, Descricao);
         }       
     }
 }

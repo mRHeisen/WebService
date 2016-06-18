@@ -1,31 +1,28 @@
-﻿using MapNat.entities.locais;
-using MapNat.helpers.ws.locais;
+﻿using MapNat.entities.exercicio;
+using MapNat.helpers.ws.exercicio;
 
 namespace MapNat.controllers
 {
     /// <summary>
     /// Aqui é a classe que irá executar os métodos que trataram da sinformaçõese e buscará os dados que o Web Service Retornar
     /// </summary>
-    public class LocaisController
+    public class ExercicioController
     {
         private string respCode;
-        LocaisDAO LocaisDAO = new LocaisDAO();
+        ExercicioDAO ExercicioDAO = new ExercicioDAO();
 
-        /// <summary>
-        /// Busca Lista de latitudes e longitudes cadastradas no banco de dados
-        /// </summary>
-        /// <returns></returns>
-        internal ResponseLocais ObterExecicios(int CodPessoa)
+
+        internal ResponseExercicio ObterExecicios(int CodPessoa)
         {
-            var resp = new ResponseLocais();
+            var resp = new ResponseExercicio();
 
             //Se a aplicação possui acesso, busca as informações, se não retorna mensagem
             
                 //Pegaos Locais no banco de dados
-                resp = LocaisDAO.GetLocais(CodPessoa, out respCode);
+                resp = ExercicioDAO.GetExercicio(CodPessoa, out respCode);
 
-                //Se encontrou os locais
-                if (resp.locais.Count > 0)
+            //Se encontrou os Exercicio
+            if (resp.exercicio.Count > 0)
                 {
                     resp.Status.Sucesso = "1";
                     resp.Status.Codigo = "SUCCESS001";
@@ -40,25 +37,15 @@ namespace MapNat.controllers
             return resp;
         }
 
-        /// <summary>
-        /// Grava os dados básicos do local bem como descrição, latitude e longitude
-        /// </summary>        
-        /// <param name="ApiKey"></param>
-        /// <param name="PublicKey"></param>
-        /// <param name="ID"></param>
-        /// <param name="Latitude"></param>
-        /// <param name="Longitude"></param>
-        /// <param name="Descricao"></param>
-        /// <returns></returns>
-        internal ResponseLocais PutLocais(string ApiKey, string PublicKey, string ID, string Latitude, string Longitude, string Descricao)
+        internal ResponseExercicio PutExercicio(string ApiKey, string PublicKey, string ID, string Latitude, string Longitude, string Descricao)
         {
-            var resp = new ResponseLocais();
+            var resp = new ResponseExercicio();
 
                 //Grava um local ou edita um existente
-                resp = LocaisDAO.PutLocais(ID, Latitude, Longitude, Descricao, out respCode);
+                resp = ExercicioDAO.PutExercicio(ID, Latitude, Longitude, Descricao, out respCode);
 
                 //Se efetuou a tarefa e retornou dados
-                if (resp.locais.Count > 0)
+                if (resp.exercicio.Count > 0)
                 {
                     resp.Status.Sucesso = "1";
                     resp.Status.Codigo = "SUCCESS001";

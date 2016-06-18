@@ -1,15 +1,15 @@
 ﻿using MapNat.helpers.ws._default;
-using MapNat.models.pessoa;
+using MapNat.models.exercicio;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace MapNat.helpers.ws.pessoa
+namespace MapNat.helpers.ws.exercicio
 {
     /// <summary>
-    /// Aqui ocorre o retorno sobre os dados, pois maioria dos método de Web Service e consumo são do Tipo ResponsePessoa(Ou como for chamado).
+    /// Aqui ocorre o retorno sobre os dados, pois maioria dos método de Web Service e consumo são do Tipo ResponseExercicio(Ou como for chamado).
     /// O ideal é que para cada Model do projeto seja criado um Response(Nome do Model), e os método do webservice que o utilizarem seja do tipo dele, como os métodos que tenho em todas classes desse Web Service
     /// </summary>
-    public class ResponsePessoa
+    public class ResponseExercicio
     {
 
         [DataMember(Order = 0)]
@@ -17,9 +17,9 @@ namespace MapNat.helpers.ws.pessoa
 
 
         [DataMember(Order = 1)]
-        public List<Pessoa> pessoa { get; set; }
+        public List<Exercicio> exercicio { get; set; }
 
-        public ResponsePessoa()
+        public ResponseExercicio()
         {
             this.Status = new ResponseStatus();
         }
