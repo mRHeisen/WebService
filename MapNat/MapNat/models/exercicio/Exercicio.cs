@@ -13,19 +13,19 @@ namespace MapNat.models.exercicio
         { }
 
 
-        public Exercicio(int? ExercicioCodigo, string Nome, string Descricao)
+        public Exercicio(string Url, string Nome, int? Repeticao)
         {
-            this.ExercicioCodigo = ExercicioCodigo;
+            this.Url = Url;
             this.Nome = Nome;
-            this.Descricao = Descricao;
+            this.Repeticao = Repeticao;
 
         }
 
         [DataMember(Order = 0)]
-        public int? ExercicioCodigo { get; set; }
+        public string Url { get; set; }
         [DataMember(Order = 1)]
         public string Nome { get; set; }
         [DataMember(Order = 2)]
-        public string Descricao { get; set; }
+        public int? Repeticao { get; set; }
     }
 }

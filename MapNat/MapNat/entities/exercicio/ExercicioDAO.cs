@@ -19,15 +19,15 @@ namespace MapNat.entities.exercicio
             {
                 db.Clear();
                 //Consulta treino
-                // db.SqlStat.Append("select [Url], [Nome], [Repeticoes] from[hf].[Exercicio] ex inner join[hf].[ImagemExercicio] imgEx on imgEx.[ExercicioCodigo] = ex.[ExercicioCodigo] inner join[hf].[Serie] s on ex.[ExercicioCodigo] = s.[ExercicioCodigo]");
-                db.SqlStat.Append("select [ExercicioCodigo], [Nome], [Descricao] from[hf].[Exercicio]");
+                db.SqlStat.Append("select [Url], [Nome], [Repeticoes] from[hf].[Exercicio] ex inner join[hf].[ImagemExercicio] imgEx on imgEx.[ExercicioCodigo] = ex.[ExercicioCodigo] inner join[hf].[Serie] s on ex.[ExercicioCodigo] = s.[ExercicioCodigo]");
+                //db.SqlStat.Append("select [ExercicioCodigo], [Nome], [Descricao] from[hf].[Exercicio]");
 
                 if (db.ExecuteDataReader())
                 {
                     //Busca todos
                     while (db.DataReader.Read())
                     {
-                        response.exercicio.Add(new Exercicio(db.GetInt("ExercicioCodigo"), db.GetString("Nome"), db.GetString("Descricao")));
+                        response.exercicio.Add(new Exercicio(db.GetString("Url"), db.GetString("Nome"), db.GetInt("Repeticoes")));
                     }
                 }
                 else
